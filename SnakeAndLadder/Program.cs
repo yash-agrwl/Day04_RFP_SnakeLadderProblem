@@ -13,7 +13,8 @@ namespace SnakeAndLadder
         {
             Console.WriteLine("Welcome To Computation Of Snake And Ladder Problem\n");
             Program Player1 = new Program();
-            while(Player1.Position < End)
+            int count = 1;
+            while (Player1.Position < End)
             {
                 int die = Player1.RollDie();
                 int option = Player1.CheckOption();
@@ -30,7 +31,10 @@ namespace SnakeAndLadder
                     default:
                         break;
                 }
+                Console.WriteLine($"Position after Die{count} is: " + Player1.Position);
+                count++;
             }
+            Console.WriteLine("\nTotal number of Die played to win is: " + (count - 1));
         }
 
         public int RollDie()
