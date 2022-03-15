@@ -5,7 +5,7 @@ namespace SnakeAndLadder
     internal class Program
     {
 
-        static int Start = 0;
+        const int Start = 0, End = 100;
         int Position = Start;
         const int NoPlay = 0, Ladder = 1, Snake = 2;
 
@@ -13,20 +13,24 @@ namespace SnakeAndLadder
         {
             Console.WriteLine("Welcome To Computation Of Snake And Ladder Problem\n");
             Program Player1 = new Program();
-            int die = Player1.RollDie();
-            int option = Player1.CheckOption();
-            switch (option)
+            while(Player1.Position < End)
             {
-                case Ladder:    
-                    Player1.Position += die;
-                    break;
-                case Snake:
-                    Player1.Position -= die;
-                    break;
-                default:
-                    break;
+                int die = Player1.RollDie();
+                int option = Player1.CheckOption();
+                switch (option)
+                {
+                    case Ladder:
+                        Player1.Position += die;
+                        break;
+                    case Snake:
+                        Player1.Position -= die;
+                        if(Player1.Position < 0)
+                            Player1.Position = 0;
+                        break;
+                    default:
+                        break;
+                }
             }
-
         }
 
         public int RollDie()
