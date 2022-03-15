@@ -20,12 +20,12 @@ namespace SnakeAndLadder
                 switch (option)
                 {
                     case Ladder:
-                        Player1.Position += die;
+                        if((Player1.Position + die) <= 100)
+                            Player1.Position += die;
                         break;
-                    case Snake:
-                        Player1.Position -= die;
-                        if(Player1.Position < 0)
-                            Player1.Position = 0;
+                    case Snake:                    
+                        if((Player1.Position - die) >= 0)
+                            Player1.Position -= die;
                         break;
                     default:
                         break;
